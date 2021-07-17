@@ -28,10 +28,15 @@ function generatePassword(lower, upper, number, symbol, length) {
   if (typesCount === 0) {
     return alert('Try again and choose options for password!');
   }
-  console.log(typesArr);
+  
+  for (var i = 0; i < length; i += typesCount) {
+    typesArr.forEach(type => {
+      var charName = Object.keys(type)[0];
+      generatedPassword += randomChar[charName]();
+    });
+  }
+
 }
-
-
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
