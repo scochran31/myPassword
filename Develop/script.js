@@ -17,7 +17,7 @@ generateBtn.addEventListener("click",function () {
   var randomSymbol = confirm('Would you like your password to include symbols?');
   var length = prompt('Please choose between 8-128 characters for your password.');
 
-  passwordText.innerText = generatePassword(randomLower, randomUpper, randomNumber, randomSymbol, length);
+  passwordText.innerHTML = generatePassword(randomLower, randomUpper, randomNumber, randomSymbol, length);
 });
 
 function generatePassword(lower, upper, number, symbol, length) {
@@ -35,14 +35,10 @@ function generatePassword(lower, upper, number, symbol, length) {
       generatedPassword += randomChar[charName]();
     });
   }
+  // Write password to the #password input
+  var password = generatedPassword.slice(0, length);
 
-}
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-
-  passwordText.value = password;
-
+  return password;
 }
 
 // Add event listener to generate button
